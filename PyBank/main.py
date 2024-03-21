@@ -19,10 +19,17 @@ for row in budgetData:
     row['sortableDate'] = new_date
 
 # Sort by the sortable date key.
-sortedBudgetData = sorted(budgetData, key=itemgetter('sortableDate')) 
-
-print(sortedBudgetData)
+sortedBudgetData = sorted(budgetData, key=itemgetter('sortableDate'))
 
 # Print our message header to the terminal.
 print("Financial Analysis")
 print("----------------------------")
+
+# Find and print the total number of months included in the dataset.
+prevDate = ""
+num_months = 0
+for row in sortedBudgetData:
+    date = row['Date']
+    if date != prevDate:
+        num_months += 1
+print(f"Total Months: {num_months}")
