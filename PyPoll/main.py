@@ -78,3 +78,16 @@ print(f"{name}: {percentage:.3f}% ({voteCount})")
 print("-------------------------")
 print(f"Winner: {winnerName}")
 print("-------------------------")
+
+# Finally, we'll print the message list to output.txt.
+
+with open("output.txt", "w") as textFile:
+    textFile.write("Election Results\n")
+    textFile.write("-------------------------\n")
+    textFile.write(f"Total Votes: {numVotes}\n")
+    textFile.write("-------------------------\n")
+    for line in message:
+        textFile.write(f"{line}\n")
+    textFile.write("-------------------------\n")
+    textFile.write(f"Winner: {winnerName}\n")
+    textFile.write("-------------------------\n")
