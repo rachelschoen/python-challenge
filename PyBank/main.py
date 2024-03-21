@@ -27,12 +27,12 @@ print("----------------------------")
 
 # Find and print the total number of months included in the dataset.
 prevDate = ""
-num_months = 0
+numMonths = 0
 for row in sortedBudgetData:
     date = row['Date']
     if date != prevDate:
-        num_months += 1
-print(f"Total Months: {num_months}")
+        numMonths += 1
+print(f"Total Months: {numMonths}")
 
 # Find, then total, then print, the net amount of "Profit/Losses" over the entire period.
 net = 0
@@ -40,3 +40,29 @@ for row in budgetData:
     net += int(row['Profit/Losses'])
 print(f"Total: ${net}")
 
+# Calculate and print the average change in "Profit/Losses" between months, over the entire period.
+
+sumChanges = 0
+previousValue = int(budgetData[0]['Profit/Losses'])
+for row in budgetData:
+    row['Change'] = int(row['Profit/Losses']) - previousValue
+    sumChanges += row['Change']
+    previousValue = int(row['Profit/Losses'])
+avgChange = sumChanges/(len(budgetData) -1)
+print("Average Change: ${:.2f}".format(avgChange))
+
+# Find and print the greatest increase and decrease in profits (both the date and the amount), over the entire period.
+maxIncrValue = 0
+maxIncrDate = ""
+maxDecrValue = 0
+maxDecrDate = ""
+for row in budgetData:
+    if int(row['Change']) > maxIncrValue:
+        maxIncrValue = int(row['Change'])
+        maxIncrDate = row['Date']
+    if int(row['Change']) < maxDecrValue:
+        maxDecrValue = int(row['Change'])
+        maxDecrDate = row['Date']
+
+print(f"Greatest Increase in Profits: {maxIncrDate} (${maxIncrValue})")
+print(f"Greatest Decrease in Profits: {maxDecrDate} (${maxDecrValue})")
