@@ -62,3 +62,19 @@ for i in range(0, numVotes):
 
 # 2) We've finished the for-loop, but we still need to print the last candidate's name, votes, and percentage.
         
+#     a) Calculate percentage of votes out of total
+percentage = round(voteCount/numVotes*100, 3)
+
+#     b) Check if it's the winner
+if percentage > winnerPercentage:
+    winnerName = name
+    winnerPercentage = percentage
+
+#     c) Add our last candidate's name, votes, and percentage to the message list
+message.append(name + ": " + str(percentage) + "% " + "(" + str(voteCount) + ")")
+
+#     d) Print out the winner name, percentage won by, and total votes received
+print(f"{name}: {percentage:.3f}% ({voteCount})")
+print("-------------------------")
+print(f"Winner: {winnerName}")
+print("-------------------------")
