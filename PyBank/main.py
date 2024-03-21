@@ -33,3 +33,10 @@ for row in sortedBudgetData:
     if date != prevDate:
         num_months += 1
 print(f"Total Months: {num_months}")
+
+# Find, then total, then print, the net amount of "Profit/Losses" over the entire period.
+net = 0
+for row in budgetData:
+    net += int(row['Profit/Losses'])
+print(f"Total: ${net}")
+
