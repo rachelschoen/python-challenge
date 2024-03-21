@@ -66,3 +66,13 @@ for row in budgetData:
 
 print(f"Greatest Increase in Profits: {maxIncrDate} (${maxIncrValue})")
 print(f"Greatest Decrease in Profits: {maxDecrDate} (${maxDecrValue})")
+
+# Finally, write out the results to output.txt.
+with open("output.txt", "w") as textFile:
+    textFile.write("Financial Analysis\n")
+    textFile.write("----------------------------\n")
+    textFile.write(f"Total Months: {numMonths}\n")
+    textFile.write(f"Total: ${net}\n")
+    textFile.write("Average  Change: ${:.2f}\n".format(avgChange))
+    textFile.write(f"Greatest Increase in Profits: {maxIncrDate} (${maxIncrValue})\n")
+    textFile.write(f"Greatest Decrease in Profits: {maxDecrDate} (${maxDecrValue})\n")
