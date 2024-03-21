@@ -8,9 +8,7 @@ from operator import itemgetter
 
 with open('./Resources/budget_data.csv', 'r') as myFile:
     reader = csv.DictReader(myFile)
-    budgetData = list()
-    for dictionary in reader:
-        budgetData.append(dictionary)
+    budgetData = list(reader)
 
 # Add a sortable date to each dictionary.
 for row in budgetData:
